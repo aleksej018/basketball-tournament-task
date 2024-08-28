@@ -8,7 +8,6 @@ export default function simulateGroupMatch(teamOne, teamTwo) {
   );
 
   const [scoreOne, scoreTwo] = generateRandomScore(probabilityTeamOneWins);
-  console.log(`${teamOne.name} - ${teamTwo.name}: (${scoreOne} : ${scoreTwo})`);
 
   updateTeamStatus(teamOne, teamTwo, scoreOne, scoreTwo);
 

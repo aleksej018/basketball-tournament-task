@@ -1,6 +1,10 @@
 import { groupData, exhibitionsData } from "./data/index.js";
 import { TeamModel, GroupModel } from "./models/index.js";
-import { groupPhaseSimulate } from "./services/index.js";
+import {
+  groupPhaseSimulate,
+  assignRanks,
+  drawPhaseSimulate,
+} from "./services/index.js";
 import { showGroupResults } from "./utils/index.js";
 
 const groups = Object.entries(groupData).map(([groupName, teams]) => {
@@ -10,7 +14,8 @@ const groups = Object.entries(groupData).map(([groupName, teams]) => {
     const team = TeamModel(
       teamData.Team,
       teamData.ISOCode,
-      teamData.FIBARanking
+      teamData.FIBARanking,
+      (teamData.group = groupName)
     );
     group.addTeam(team);
   });
@@ -23,3 +28,12 @@ groups.forEach((group) => {
 });
 
 showGroupResults(groups);
+console.log(
+  "-------------------------------------------------------------------------------"
+);
+
+const teamsForDraw = assignRanks(groups);
+drawPhaseSimulate(teamsForDraw);
+console.log(
+  "-------------------------------------------------------------------------------"
+);

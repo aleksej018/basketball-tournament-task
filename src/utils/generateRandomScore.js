@@ -1,6 +1,6 @@
 export default function generateRandomScore(probability) {
   const baseScoreTeam1 = Math.floor(Math.random() * 30) + 70;
-  const baseScoreTeam2 = Math.floor(Math.random() * 15) + 60;
+  const baseScoreTeam2 = Math.floor(Math.random() * 15) + 55;
 
   const scoreAdjustment = Math.floor(
     Math.random() * 10 * (1 - Math.abs(0.5 - probability))
