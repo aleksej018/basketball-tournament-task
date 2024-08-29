@@ -15,17 +15,12 @@ export default function assignRanks(groups) {
   const rankedSecond = rankTeams(topTeams.second);
   const rankedThird = rankTeams(topTeams.third);
 
-  const finalRanks = [];
-  rankedFirst.forEach((team, index) =>
-    finalRanks.push({ ...team, rank: index + 1 })
-  );
-  rankedSecond.forEach((team, index) =>
-    finalRanks.push({ ...team, rank: index + 4 })
-  );
-  rankedThird.forEach((team, index) =>
-    finalRanks.push({ ...team, rank: index + 7 })
-  );
+  const finalRanks = [
+    ...rankedFirst.map((team, index) => ({ ...team, rank: index + 1 })),
+    ...rankedSecond.map((team, index) => ({ ...team, rank: index + 4 })),
+    ...rankedThird.map((team, index) => ({ ...team, rank: index + 7 })),
+  ];
+  const passingTeams = finalRanks.slice(0, 8);
 
-  const passingTeams = finalRanks.filter((team) => team.rank <= 8);
   return { passingTeams };
 }

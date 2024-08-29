@@ -1,4 +1,4 @@
-const GroupModel = (name, team) => {
+const GroupModel = (name) => {
   return {
     name,
     teams: [],
