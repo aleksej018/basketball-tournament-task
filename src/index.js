@@ -4,6 +4,7 @@ import {
   groupPhaseSimulate,
   assignRanks,
   drawPhaseSimulate,
+  eliminationPhaseSimulate,
 } from "./services/index.js";
 import { showGroupResults } from "./utils/index.js";
 
@@ -31,9 +32,9 @@ showGroupResults(groups);
 console.log(
   "-------------------------------------------------------------------------------"
 );
-
 const teamsForDraw = assignRanks(groups);
-drawPhaseSimulate(teamsForDraw);
+const matchesToSimulate = drawPhaseSimulate(teamsForDraw);
 console.log(
   "-------------------------------------------------------------------------------"
 );
+eliminationPhaseSimulate(matchesToSimulate);

@@ -6,3 +6,5 @@ export { default as showGroupResults } from "./showGroupResults.js";
 export { default as showHats } from "./showHats.js";
 export { default as getRandomTeamToDraw } from "./getRandomTeamToDraw.js";
 export { default as formQuarterFinalPairs } from "./formQuarterFinalPairs.js";
+export { default as simulateMatch } from "./simulateMatch.js";
+export { default as updateTeamStatus } from "./updateTeamStatus.js";

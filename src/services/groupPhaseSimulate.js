@@ -1,5 +1,4 @@
-import { groupMatchSimulate } from "./index.js";
-import { sortTeamsByPoints } from "../utils/index.js";
+import { sortTeamsByPoints, simulateMatch } from "../utils/index.js";
 
 export default function simulateGroupPhase(group) {
   const matchSchedule = [
@@ -19,7 +18,7 @@ export default function simulateGroupPhase(group) {
       const teamOne = group.teams[schedule[i]];
       const teamTwo = group.teams[schedule[i + 1]];
 
-      const matchResult = groupMatchSimulate(teamOne, teamTwo);
+      const matchResult = simulateMatch(teamOne, teamTwo);
 
       roundResults.push(matchResult);
       console.log(

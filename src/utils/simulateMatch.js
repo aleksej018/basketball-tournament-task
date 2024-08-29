@@ -1,7 +1,10 @@
-import { calculateProbability, generateRandomScore } from "../utils/index.js";
-import { updateTeamStatus } from "./index.js";
+import {
+  generateRandomScore,
+  calculateProbability,
+  updateTeamStatus,
+} from "./index.js";
 
-export default function simulateGroupMatch(teamOne, teamTwo) {
+export default function simulateMatch(teamOne, teamTwo) {
   const probabilityTeamOneWins = calculateProbability(
     teamOne.fibaRank,
     teamTwo.fibaRank

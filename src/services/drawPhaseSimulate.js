@@ -24,4 +24,6 @@ export default function drawPhaseSimulate(teams) {
       `      ${quarterFinalsPairs[2].teamA.name} - ${quarterFinalsPairs[2].teamB.name}\n` +
       `      ${quarterFinalsPairs[3].teamA.name} - ${quarterFinalsPairs[3].teamB.name}`
   );
+
+  return quarterFinalsPairs;
 }
