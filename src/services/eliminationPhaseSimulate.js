@@ -1,4 +1,4 @@
-import { simulateMatch } from "../utils/index.js";
+import { simulateMatch, showResult } from "../utils/index.js";
 
 export default function eliminationPhaseSimulate(matchesToSimulate) {
   const teams = [];
@@ -30,9 +30,7 @@ export default function eliminationPhaseSimulate(matchesToSimulate) {
     const loser = result.scoreOne > result.scoreTwo ? pair[1] : pair[0];
     thirdPlaceTeams.push(loser);
 
-    console.log(
-      `      ${result.teamOne} - ${result.teamTwo} (${result.scoreOne}:${result.scoreTwo})`
-    );
+    showResult(result);
   });
 
   console.log("\nMeč za treće mesto:");
@@ -45,15 +43,11 @@ export default function eliminationPhaseSimulate(matchesToSimulate) {
       ? thirdPlaceTeams[0]
       : thirdPlaceTeams[1];
 
-  console.log(
-    `      ${thirdPlaceResult.teamOne} - ${thirdPlaceResult.teamTwo} (${thirdPlaceResult.scoreOne}:${thirdPlaceResult.scoreTwo})`
-  );
+  showResult(thirdPlaceResult);
 
   console.log("\nFinalna utakmica:");
   const finalResult = simulateMatch(finalTeams[0], finalTeams[1]);
-  console.log(
-    `      ${finalResult.teamOne} - ${finalResult.teamTwo} (${finalResult.scoreOne}:${finalResult.scoreTwo})`
-  );
+  showResult(finalResult);
 
   const champion =
     finalResult.scoreOne > finalResult.scoreTwo ? finalTeams[0] : finalTeams[1];
