@@ -12,9 +12,7 @@ export default function eliminationPhaseSimulate(matchesToSimulate) {
       result.scoreOne > result.scoreTwo ? match.teamA : match.teamB;
     teams.push(winner);
 
-    console.log(
-      `      ${result.teamOne} - ${result.teamTwo} (${result.scoreOne}:${result.scoreTwo})`
-    );
+    showResult(result);
   });
 
   const semiFinalPairs = [
