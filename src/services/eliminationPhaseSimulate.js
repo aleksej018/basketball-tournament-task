@@ -8,15 +8,13 @@ export default function eliminationPhaseSimulate(matchesToSimulate) {
   console.log("Cetvrtfinalne utakmice:");
   matchesToSimulate.forEach((match) => {
     const result = simulateMatch(match.teamA, match.teamB);
+    const winner =
+      result.scoreOne > result.scoreTwo ? match.teamA : match.teamB;
+    teams.push(winner);
 
     console.log(
       `      ${result.teamOne} - ${result.teamTwo} (${result.scoreOne}:${result.scoreTwo})`
     );
-
-    const winner =
-      result.scoreOne > result.scoreTwo ? match.teamA : match.teamB;
-
-    teams.push(winner);
   });
 
   const semiFinalPairs = [
@@ -27,17 +25,14 @@ export default function eliminationPhaseSimulate(matchesToSimulate) {
   console.log("\nPolufinalne utakmice:");
   semiFinalPairs.forEach((pair) => {
     const result = simulateMatch(pair[0], pair[1]);
+    const winner = result.scoreOne > result.scoreTwo ? pair[0] : pair[1];
+    finalTeams.push(winner);
+    const loser = result.scoreOne > result.scoreTwo ? pair[1] : pair[0];
+    thirdPlaceTeams.push(loser);
 
     console.log(
       `      ${result.teamOne} - ${result.teamTwo} (${result.scoreOne}:${result.scoreTwo})`
     );
-
-    const winner = result.scoreOne > result.scoreTwo ? pair[0] : pair[1];
-
-    finalTeams.push(winner);
-
-    const loser = result.scoreOne > result.scoreTwo ? pair[1] : pair[0];
-    thirdPlaceTeams.push(loser);
   });
 
   console.log("\nMeč za treće mesto:");
@@ -45,15 +40,14 @@ export default function eliminationPhaseSimulate(matchesToSimulate) {
     thirdPlaceTeams[0],
     thirdPlaceTeams[1]
   );
-
-  console.log(
-    `      ${thirdPlaceResult.teamOne} - ${thirdPlaceResult.teamTwo} (${thirdPlaceResult.scoreOne}:${thirdPlaceResult.scoreTwo})`
-  );
-
   const bronzeMedalist =
     thirdPlaceResult.scoreOne > thirdPlaceResult.scoreTwo
       ? thirdPlaceTeams[0]
       : thirdPlaceTeams[1];
+
+  console.log(
+    `      ${thirdPlaceResult.teamOne} - ${thirdPlaceResult.teamTwo} (${thirdPlaceResult.scoreOne}:${thirdPlaceResult.scoreTwo})`
+  );
 
   console.log("\nFinalna utakmica:");
   const finalResult = simulateMatch(finalTeams[0], finalTeams[1]);
