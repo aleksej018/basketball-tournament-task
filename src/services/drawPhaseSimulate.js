@@ -1,4 +1,4 @@
-import { showHats, formQuarterFinalPairs } from "../utils/index.js";
+import { showHats, formQuarterFinalPairs } from "../utils/utils.js";
 
 export default function drawPhaseSimulate(teams) {
   const { passingTeams } = teams;

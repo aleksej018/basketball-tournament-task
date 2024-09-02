@@ -1,4 +1,4 @@
-import { sortTeamsByPoints, simulateMatch } from "../utils/index.js";
+import { sortTeamsByPoints, simulateMatch } from "../utils/utils.js";
 
 export default function simulateGroupPhase(group) {
   const matchSchedule = [
@@ -7,27 +7,28 @@ export default function simulateGroupPhase(group) {
     [0, 3, 1, 2],
   ];
 
-  const results = [];
-
-  matchSchedule.forEach((schedule, roundIndex) => {
+  const results = matchSchedule.map((schedule, roundIndex) => {
     console.log(`Grupa ${group.name} - Kolo ${roundIndex + 1}:`);
 
-    const roundResults = [];
+    const roundResults = schedule
+      .map((teamIndex, i) => {
+        if (i % 2 === 0) {
+          const teamOne = group.teams[teamIndex];
+          const teamTwo = group.teams[schedule[i + 1]];
 
-    for (let i = 0; i < schedule.length; i += 2) {
-      const teamOne = group.teams[schedule[i]];
-      const teamTwo = group.teams[schedule[i + 1]];
+          const matchResult = simulateMatch(teamOne, teamTwo);
+          console.log(
+            `${teamOne.name} - ${teamTwo.name} (${matchResult.scoreOne}:${matchResult.scoreTwo})`
+          );
 
-      const matchResult = simulateMatch(teamOne, teamTwo);
+          return matchResult;
+        }
+        return null;
+      })
+      .filter(Boolean);
 
-      roundResults.push(matchResult);
-      console.log(
-        `${teamOne.name} - ${teamTwo.name} (${matchResult.scoreOne}:${matchResult.scoreTwo})`
-      );
-    }
-
-    results.push(roundResults);
     console.log("");
+    return roundResults;
   });
 
   const sortedTeams = sortTeamsByPoints(group.teams);

@@ -1,10 +1,10 @@
-import { rankTeams } from "../utils/index.js";
+import { rankTeams } from "../utils/utils.js";
 
 export default function assignRanks(groups) {
   const topTeams = { first: [], second: [], third: [] };
 
   groups.forEach((group) => {
-    const teams = group.teams;
+    const { teams } = group;
 
     topTeams.first.push(teams[0]);
     topTeams.second.push(teams[1]);

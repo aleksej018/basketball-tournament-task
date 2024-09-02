@@ -1,4 +1,4 @@
-import { simulateMatch, showResult } from "../utils/index.js";
+import { simulateMatch, showResult } from "../utils/utils.js";
 
 export default function eliminationPhaseSimulate(matchesToSimulate) {
   const teams = [];

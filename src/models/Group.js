@@ -1,16 +1,15 @@
-const GroupModel = (name) => {
-  return {
-    name,
-    teams: [],
+class GroupModel {
+  constructor(data) {
+    this.name = data.name;
+    this.teams = [];
+  }
 
-    addTeam(team) {
-      if (team?.name) {
-        this.teams.push(team);
-      } else {
-        throw new Error("Error");
-      }
-    },
-  };
-};
+  addTeam(team) {
+    if (!team?.name) {
+      throw new Error("Error: Invalid team");
+    }
+    this.teams.push(team);
+  }
+}
 
 export default GroupModel;

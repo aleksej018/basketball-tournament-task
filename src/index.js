@@ -6,18 +6,15 @@ import {
   drawPhaseSimulate,
   eliminationPhaseSimulate,
 } from "./services/index.js";
-import { showGroupResults } from "./utils/index.js";
+import { showGroupResults } from "./utils/utils.js";
 
 const groups = Object.entries(groupData).map(([groupName, teams]) => {
-  const group = GroupModel(groupName);
+  const group = new GroupModel({ name: groupName });
 
   teams.forEach((teamData) => {
-    const team = TeamModel(
-      teamData.Team,
-      teamData.ISOCode,
-      teamData.FIBARanking,
-      (teamData.group = groupName)
-    );
+    teamData.group = groupName;
+    const team = new TeamModel(teamData);
+
     group.addTeam(team);
   });
 
